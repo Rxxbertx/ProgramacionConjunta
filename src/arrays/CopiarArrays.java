@@ -41,9 +41,11 @@ public class CopiarArrays {
 		 */
 
 		int[] numeros3 = numeros1.clone();
+		//int [] numeros3 = numeros1;
+		
 
-		System.out.println("Los arrays 1 y 2 son iguales?: " + numeros1.equals(numeros2));
-		System.out.println("Los arrays 1 y 3 son iguales?: " + numeros1.equals(numeros3));
+		System.out.println("Los arrays 1 y 2 son iguales?: " + Arrays.equals(numeros1,numeros2));
+		System.out.println("Los arrays 1 y 3 son iguales?: " + Arrays.equals(numeros1,numeros3));
 
 		/*
 		 * Pide un número al usuario y rellena todos los elementos del tercer array con
