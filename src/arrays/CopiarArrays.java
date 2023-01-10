@@ -1,4 +1,4 @@
-package mery;
+package arrays;
 
 import java.util.Arrays;
 
