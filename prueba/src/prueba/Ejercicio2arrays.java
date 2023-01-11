@@ -1,16 +1,12 @@
-package prueba;
+package arrays;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Ejercicio2arrays {
+public class PeppaPig {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		int contNeg = 0, contPos = 0, contCeros = 0;
-
-		int primo = 0;
 
 		Scanner sc = new Scanner(System.in);
 
@@ -27,51 +23,62 @@ public class Ejercicio2arrays {
 
 		creaArray(sc, array1);
 
-		System.out.println("El nuevo array es: " + Arrays.toString(array1));
-
-		arrayPrimo(primo, array1);
-		
-		int[] array2 = new int[primo];
-		
-		
-
-	}
-
-	/**
-	 * @param primo
-	 * @param array1
-	 */
-	private static void arrayPrimo(int primo, int[] array1) {
-		int array2;
-
+		System.out.println("El array que has creado es: " + Arrays.toString(array1));
+		int numArray = 0;
 		for (int i = 0; i < array1.length; i++) {
-
-			for (int num = array1[i]; num <= array1.length; num++) {
-				int x = 1;
-				int cont = 0;
-
-				while (x <= num) {
-					if (num % x == 0) {
-						cont++;
-					}
-					x++;
-				}
-
-				if (cont == 2) {
-
-					primo++;
-					array2=num;
-					System.out.println(num + "PRIMO");
-
-				}else {
-					System.out.println(num + "NO PRIMO");
-				}
+			if (arrayPrimo(array1, i)) {
+				numArray++;
 
 			}
 
 		}
-		
-		
+
+		System.out.println("El nuevo array tiene extensión de " + numArray);
+
+		int[] array2 = new int[numArray];
+
+		for (int i = 0, i2 = 0; i < array1.length; i++) {
+			if (arrayPrimo(array1, i)) {
+				array2[i2] = array1[i];
+				i2++;
+			}
+
+		}
+		System.out.println("El nuevo array es: " + Arrays.toString(array2));
+
+		// int[] array2 = new int[primo];
+
+	}
+
+	/**
+	 * @param i
+	 * @param array1
+	 * @return
+	 */
+	private static boolean arrayPrimo(int[] array1, int i) {
+
+		boolean primo = false;
+
+		for (int num = array1[i]; num <= array1[i]; num++) {
+			int x = 1;
+			int cont = 0;
+
+			while (x <= num) {
+				if (num % x == 0) {
+					cont++;
+				}
+				x++;
+			}
+			if (cont == 2) {
+
+				primo = true;
+
+			} else {
+				primo = false;
+			}
+
+		}
+		return primo;
 	}
 
 	/**
