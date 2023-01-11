@@ -26,7 +26,7 @@ public class Ejercicio6 {
 
 		int numDni = sc.nextInt();
 
-		System.out.println("El dni queda como sigue: " + numDni + dni[numDni % 23]);
+		System.out.println("El dni queda como sigue: " + numDni + "-" + dni[numDni % 23]);
 
 		sc.close();
 
