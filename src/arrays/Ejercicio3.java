@@ -19,6 +19,18 @@ public class Ejercicio3 {
 
 		int[] array1 = new int[10];
 		
+		arrayRandom(array1);
+
+
+
+		System.out.println("El array que has creado es: " + Arrays.toString(array1));
+
+	}
+
+	/**
+	 * @param array1
+	 */
+	private static void arrayRandom(int[] array1) {
 		for (int i = 0; i < array1.length; i++) {
 
 			
@@ -29,11 +41,6 @@ public class Ejercicio3 {
 				i=array1.length;
 			}
 		}
-
-
-
-		System.out.println("El array que has creado es: " + Arrays.toString(array1));
-
 	}
 
 	/**
