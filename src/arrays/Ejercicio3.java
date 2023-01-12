@@ -29,7 +29,7 @@ public class Ejercicio3 {
 	private static void arrayRandom(int[] array1) {
 		for (int i = 0; i < array1.length; i++) {
 
-			array1[i] = (int) (Math.random() * 25);
+			array1[i] = (int) (Math.random() * 26);
 
 			if (array1[i] == 15) {
 				System.out.println(

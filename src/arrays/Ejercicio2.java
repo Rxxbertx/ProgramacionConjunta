@@ -17,7 +17,7 @@ public class Ejercicio2 {
 		 * números primos los copiará en otro array de enteros llamado primos
 		 */
 
-		int[] array1 = new int[10];
+		int[] array1 = new int[10]; //Aquí queda ya inicializado a 0
 
 		System.out.println(Arrays.toString(array1));
 
