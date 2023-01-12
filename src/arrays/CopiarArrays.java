@@ -9,6 +9,15 @@ public class CopiarArrays {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+		
+		String [] coches = {"renault", "volvo", "seat", "mercedes", "volkswagen"};
+		
+		for(String i: coches) {
+
+            System.out.println(i);
+
+        }
+		
 		// TODO Auto-generated method stub
 
 		/*
@@ -75,6 +84,7 @@ public class CopiarArrays {
 
 		System.out.println("El nuevo array " + Arrays.toString(enteros3));
 
+		sc.close();
 	}
 
 }
