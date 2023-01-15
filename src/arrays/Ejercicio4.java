@@ -7,6 +7,8 @@ public class Ejercicio4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		int cont = 0;
 
 		Scanner sc = new Scanner(System.in);
 
@@ -22,13 +24,13 @@ public class Ejercicio4 {
 
 		// Declaramos e inicializamos un array a 0
 		int[] baraja = new int[10];
+		
+		//Creamos el array pidiendo al usuario que introduzca cada una de las posiciones del array
 
 		crearArray(sc, baraja);
 
 		System.out.println(Arrays.toString(baraja));
-
-		int cont = 0;
-
+	
 		barajar(baraja, cont);
 
 		System.out.println("La baraja final tras haber barajado es: " + Arrays.toString(baraja));
@@ -36,8 +38,9 @@ public class Ejercicio4 {
 	}
 
 	/**
-	 * @param baraja
-	 * @param cont
+	 * Método para barajar la baraja con dos índices que se sacarán 5 veces de forma aleatoria
+	 * @param baraja array de cartas que se va a barajar
+	 * @param cont   contador para barajar 5 veces con dos índicen aleatorios
 	 */
 	private static void barajar(int[] baraja, int cont) {
 
@@ -58,8 +61,10 @@ public class Ejercicio4 {
 	}
 
 	/**
-	 * @param sc
-	 * @param baraja
+	 * Método para crear el array baraja
+	 * @param sc     Scanner para introducir las cartas de la baraja
+	 * @param baraja Baraja ya conformada con todos los elementos que ha introducido
+	 *               el usuario
 	 */
 	private static void crearArray(Scanner sc, int[] baraja) {
 		for (int i = 0; i < baraja.length; i++) {

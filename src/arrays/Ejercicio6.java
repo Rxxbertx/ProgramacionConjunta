@@ -19,6 +19,9 @@ public class Ejercicio6 {
 
 		Scanner sc = new Scanner(System.in);
 
+		// Inicializamos el array dni con las letras que puede darse a dni dependiendo
+		// del resto que dé al dividir el número del dni entre 23
+
 		char[] dni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
 				'L', 'C', 'K', 'E' };
 
