@@ -1,9 +1,9 @@
-package arrays;
+package prueba;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Ejercicio4 {
+public class Ejercicio4Casa {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
