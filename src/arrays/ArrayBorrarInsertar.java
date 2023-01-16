@@ -93,28 +93,30 @@ public class ArrayBorrarInsertar {
 
 		Scanner sc = new Scanner(System.in);
 		String[] moduloTemp = new String[modulos.length - 1];
+		boolean pararRepeticion = false;
 
 		System.err.println("Que modulo deseas BORRAR?");
 		var resp = sc.next();
 
 		Arrays.sort(modulos);
-
 		int index = Arrays.binarySearch(modulos, resp.toUpperCase());
 
 		if (index >= 0) {
 
-			for (int i = 0; i < modulos.length; i++) { // 5 ---0-4 //4 0--3
-				
+			for (int i = 0; (i < modulos.length && !pararRepeticion); i++) { // 5 ---0-4 //4 0--3
+
 				if (index == i) {
 
-					if (index == modulos.length - 1) {} 
-					else {
+					if (index == modulos.length - 1) {
+					} else {
+
+						pararRepeticion = true;
 
 						for (int j = i; j < modulos.length - 1; j++) {
-							
+
 							moduloTemp[j] = modulos[j + 1];
-							
-						}break;
+
+						}
 					}
 
 				} else {
@@ -122,13 +124,15 @@ public class ArrayBorrarInsertar {
 				}
 
 			}
-			
+
 			recrearArray(moduloTemp);
+			
+		} else {
+			System.out.println("No existe el modulo introducido");
 		}
 
 	}
-	
-	
+
 	private static void recrearArray(String[] modulosTemp) {
 		modulos = new String[modulosTemp.length];
 
@@ -136,6 +140,5 @@ public class ArrayBorrarInsertar {
 			modulos[i] = modulosTemp[i];
 		}
 	}
-
 
 }
