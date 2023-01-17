@@ -23,23 +23,45 @@ public class ArrayDni {
 
 	}
 
+	/**
+	 * Mostramos el dni con su letra y numeros
+	 * 
+	 * @param letraDni array de caracteres donde cada posicion es una letra
+	 * @param sc       objeto scanner necesario para otros metodos
+	 */
 	private static void mostrarDNI(final String[] letraDni, Scanner sc) {
-		
+
 		String dniCompleto = dniCompleto(escribirDniSinLetra(sc), letraDni);
 		System.out.println(dniCompleto);
 	}
 
+	/**
+	 * Pedimos al usuario que introduzca su dni sin la letra
+	 * 
+	 * @param sc objeto scanner
+	 * @return devuelve el dni del usuario
+	 */
+
 	private static int escribirDniSinLetra(Scanner sc) {
 		System.out.println("Escribe el DNI sin la letra");
 		return sc.nextInt();
-		
+
 	}
+
+	/**
+	 * Podemos determinar la letra del dni y cogemos el resto de la division del dni
+	 * entre 23 y ese valor sera la letra correspondiente en el array de caracteres
+	 * 
+	 * @param dni Dni sin letra del usuario
+	 * @param letraDni letra del dni del usuario
+	 * @return string del dni completo con letra y numeros
+	 */
 
 	private static String dniCompleto(int dni, String[] letraDni) {
 
 		int posicionArray = dni % 23;
 
-		return (letraDni[posicionArray]+"-" + dni);
+		return (letraDni[posicionArray] + "-" + dni);
 
 	}
 

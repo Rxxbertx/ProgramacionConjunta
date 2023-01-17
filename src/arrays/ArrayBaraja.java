@@ -31,7 +31,7 @@ public class ArrayBaraja {
 	}
 
 	/**
-	 * 
+	 * Rellenamos el array con numeros introducidos por el usuario
 	 */
 
 	private static void pedirNumerosAlUsuario() {
@@ -50,7 +50,8 @@ public class ArrayBaraja {
 	}
 
 	/**
-	 * 
+	 * Rellenamos el array con numeros aleatorios entre uno y diez que correspondera
+	 * a posiciones del array de baraja. Evitamos la repeticion de posiciones
 	 */
 
 	private static void generarNuevosIndices() {
@@ -89,7 +90,10 @@ public class ArrayBaraja {
 	}
 
 	/**
-	 * 
+	 * Aplicamos un nuevo valor a la posicion i de la baraja, guardando previamente
+	 * el valor de la baraja para aplicarlo al valor que ha modificado anteriormente
+	 * el valor de la baraja i. La posicion de la baraja a modificar correspondra a
+	 * una posicion del array, que guardara numeros aleatorios (posiciones)
 	 */
 
 	private static void aplicarIndicesNuevos() {

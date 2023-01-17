@@ -139,6 +139,7 @@ public class ArrayBorrarInsertar {
 		for (int i = 0; i < modulosTemp.length; i++) {
 			modulos[i] = modulosTemp[i];
 		}
+		
 	}
 
 }
