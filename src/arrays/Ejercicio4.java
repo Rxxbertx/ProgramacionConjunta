@@ -7,7 +7,7 @@ public class Ejercicio4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		int cont = 0;
 
 		Scanner sc = new Scanner(System.in);
@@ -24,13 +24,24 @@ public class Ejercicio4 {
 
 		// Declaramos e inicializamos un array a 0
 		int[] baraja = new int[10];
-		
-		//Creamos el array pidiendo al usuario que introduzca cada una de las posiciones del array
+
+		// Creamos el array pidiendo al usuario que introduzca cada una de las
+		// posiciones del array
 
 		crearArray(sc, baraja);
 
-		System.out.println(Arrays.toString(baraja));
-	
+		for (int i = 0; i < baraja.length; i++) {
+			
+			if (i == baraja.length-1) {
+				System.out.println(baraja[i]);
+			}else {
+				System.out.print(baraja[i] + ", ");
+			}
+			
+		}
+
+		// System.out.println(Arrays.toString(baraja));
+
 		barajar(baraja, cont);
 
 		System.out.println("La baraja final tras haber barajado es: " + Arrays.toString(baraja));
@@ -38,7 +49,9 @@ public class Ejercicio4 {
 	}
 
 	/**
-	 * Método para barajar la baraja con dos índices que se sacarán 5 veces de forma aleatoria
+	 * Método para barajar la baraja con dos índices que se sacarán 5 veces de forma
+	 * aleatoria
+	 * 
 	 * @param baraja array de cartas que se va a barajar
 	 * @param cont   contador para barajar 5 veces con dos índicen aleatorios
 	 */
@@ -49,9 +62,9 @@ public class Ejercicio4 {
 			int indice2 = (int) (Math.random() * 10);
 			System.out.println("Se va a intercambiar la posición " + indice1 + " por la posición " + indice2);
 			int carta1 = baraja[indice1];
-			int carta2 = baraja[indice2];
+			// int carta2 = baraja[indice2];
 
-			baraja[indice1] = carta2;// 4 7
+			baraja[indice1] = baraja[indice2];// 4 7
 
 			baraja[indice2] = carta1;
 
@@ -62,6 +75,7 @@ public class Ejercicio4 {
 
 	/**
 	 * Método para crear el array baraja
+	 * 
 	 * @param sc     Scanner para introducir las cartas de la baraja
 	 * @param baraja Baraja ya conformada con todos los elementos que ha introducido
 	 *               el usuario

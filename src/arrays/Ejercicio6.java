@@ -25,14 +25,23 @@ public class Ejercicio6 {
 		char[] dni = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
 				'L', 'C', 'K', 'E' };
 
-		System.out.println("Introduce por favor tu número de dni sin la letra");
-
-		int numDni = sc.nextInt();
+		int numDni = dameDNI(sc);
 
 		System.out.println("El dni queda como sigue: " + numDni + "-" + dni[numDni % 23]);
 
 		sc.close();
 
+	}
+
+	/**
+	 * @param sc
+	 * @return
+	 */
+	private static int dameDNI(Scanner sc) {
+		System.out.println("Introduce por favor tu número de dni sin la letra");
+
+		int numDni = sc.nextInt();
+		return numDni;
 	}
 
 }
