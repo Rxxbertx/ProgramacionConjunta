@@ -1,6 +1,7 @@
 package arrays;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class ArrayBidimensional {
 
@@ -62,6 +63,30 @@ public class ArrayBidimensional {
 			}
 		}
 
+		/*
+		 * Crea una clase que se llame ArrayBiMedia que defina un array bidimensional de
+		 * 5x5 números enteros inicializados a 0. Deberás solicitar al usuario que
+		 * introduzca cada elemento. Después se mostrará el resultado de la media de
+		 * cada fila
+		 */
+		
+		int [][] cubo = new int[5][5];
+		Scanner sc = new Scanner(System.in);
+		int suma=0;
+		int cont=0;
+		for (int posFila = 0; posFila < cubo.length;posFila++) {
+			System.out.print("Fila " + posFila);
+		for (int posCol =0; posCol < cubo.length;posCol++) {
+			System.out.println("Dime el número de la columna " + posCol);
+			int numero = sc.nextInt();
+			suma +=numero;
+			cont++;
+		}
+		
+		double media = suma/cont;
+		System.out.println("la media de los valores del array es: " + media);
+		
+		}
 	}
 
 }
