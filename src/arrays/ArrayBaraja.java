@@ -9,7 +9,7 @@ public class ArrayBaraja {
 
 	public static Random random = new Random();
 	protected static int[] baraja = new int[10];
-	static int[] nuevoIndex = new int[10];
+	static int[] nuevoIndex = new int[baraja.length];
 
 	public static void main(String[] args) {
 
@@ -64,7 +64,7 @@ public class ArrayBaraja {
 
 			while (!indiceRepetido) {
 
-				nuevoIndex[i] = random.nextInt(10);
+				nuevoIndex[i] = random.nextInt(baraja.length);
 
 				for (int j = 0; ((j < nuevoIndex.length) && (!indiceRepetido)); j++) {
 
