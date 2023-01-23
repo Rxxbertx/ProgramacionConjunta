@@ -20,7 +20,7 @@ public class ArrayAhorcado {
 
 		System.out.println("Vamos a empezar el juego, dime una letra");
 		String letra = sc.next();
-
+//F
 		if (!comprobarLetra(letra)) {
 			dibujarFallo();
 		}
