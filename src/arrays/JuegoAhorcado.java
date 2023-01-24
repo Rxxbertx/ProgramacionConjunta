@@ -21,7 +21,7 @@ public class JuegoAhorcado {
 		 * - Definimos una matriz de caracteres 5x5 con el identificador pantalla.
 		 */
 
-		char[][] pantalla = new char[palabra.length][palabra.length];
+		char[][] pantalla = new char[5][5];
 
 		/*
 		 * - Define un método estático inicializaJuego, que no devuelva nada y tenga
@@ -30,7 +30,7 @@ public class JuegoAhorcado {
 		 * pantalla con el carácter ‘0’.
 		 */
 
-		inicializaJuego(palabraSecreta, pantalla, palabra);
+		inicializaJuego(pantalla, palabra);
 
 		/*
 		 * - Define otro método estático mostrar, que no devuelva nada y tenga como
@@ -52,70 +52,100 @@ public class JuegoAhorcado {
 		char letra = sc.next().charAt(0);
 
 		for (int i = 0; i < palabra.length; i++) {
-			while (palabra[i] != palabraSecreta[i]) {
+			int cont = 0;
+			while (palabra[i] != palabraSecreta[i] || cont >= 9) {
 				System.out.print("Dime una letra:");
 
 				letra = sc.next().charAt(0);
+
+				if (buscarLetra(palabraSecreta, letra, palabra) == true) {
+
+					// System.out.println(Arrays.toString(palabra));
+
+					for (char fila : palabra) {
+						System.out.print(fila);
+						System.out.print(' ');
+					}
+					System.out.println();
+
+				} else {
+					
+					cont++;
+					System.out.println("Contador: " + cont);
+					switch (cont) {
+					case 1:
+						for (int x = 0; x < 3; x++) {
+							pantalla[4][x] = '@';
+
+						}
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 2:
+						for (int z = 0; z < 4; z++) {
+							pantalla[z][1] = '@';
+						}
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 3:
+						pantalla[0][2] = '@';
+						pantalla[0][3] = '@';
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 4:
+						pantalla[1][3] = '@';
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 5:
+						pantalla[2][3] = 'X';
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 6:
+						pantalla[1][2] = '/';
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 7:
+						pantalla[1][4] = '/';
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 8:
+						pantalla[3][2] = '/';
+						mostrar(palabraSecreta, palabra, pantalla);
+						break;
+					case 9:
+						pantalla[3][4] = '/';
+						mostrar(palabraSecreta, palabra, pantalla);
+						System.out.println("You're death!");
+						break;
+
+						
+					}
+
+					
+
+				}
+
 			}
 		}
 
-		System.out.println(buscarLetra(palabraSecreta, letra));
-		if (buscarLetra(palabraSecreta, letra) != -1) {
-			palabra[buscarLetra(palabraSecreta, letra)] = palabraSecreta[buscarLetra(palabraSecreta, letra)];
-		} else {
-			int cont = 0;
-			cont++;
-			switch (cont) {
-			case 1:
-				for (int i = 0; i < palabra.length; i++) {
-					pantalla[palabra.length - 1][i] = '@';
-
-				}
-				break;
-			case 2:
-				for (int i = 0; i < palabra.length; i++) {
-					pantalla[i][0] = '@';
-				}
-				break;
-			case 3:
-				pantalla[0][2] = '@';
-				pantalla[0][3] = '@';
-				break;
-			case 4:
-				pantalla[1][3]='@';
-				break;
-			case 5:
-				pantalla [2][3] ='@';
-				break;
-			case 6:
-				pantalla[1][2]='@';
-				break;
-			case 7:
-				pantalla[1][4]='@';
-				break;
-			case 8:
-				pantalla [3][2]='@';
-				break;
-			case 9:
-				pantalla [3][4]='@';
-
-			}
-		}
 	}
 
 	/**
 	 * @param palabraSecreta
 	 * @param sc
 	 */
-	private static int buscarLetra(char[] palabraSecreta, char letra) {
-		int posicion = -1;
+	private static boolean buscarLetra(char[] palabraSecreta, char letra, char[] palabra) {
+		// int posicion = -1;
+		boolean acierto = false;
 
 		for (int i = 0; i < palabraSecreta.length; i++) {
 			if (letra == palabraSecreta[i]) {
-				posicion = i;
+				// posicion = i;
+				palabra[i] = letra;
+				acierto = true;
 			}
 		}
-		return posicion;
+
+		return acierto;
 	}
 
 	/**
@@ -145,7 +175,7 @@ public class JuegoAhorcado {
 	 * @param palabraSecreta
 	 * @param pantalla
 	 */
-	private static void inicializaJuego(char[] palabraSecreta, char[][] pantalla, char[] palabra) {
+	private static void inicializaJuego(char[][] pantalla, char[] palabra) {
 
 		for (int i = 0; i < palabra.length; i++) {
 			palabra[i] = '_';
