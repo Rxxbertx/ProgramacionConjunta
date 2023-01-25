@@ -94,7 +94,7 @@ public class ArrayAhorcado {
 
 					if (primeraFila) {
 						primeraFila = false;
-						pantalla[0][1] = '-';
+						pantalla[0][1] = '/';
 
 					} else {
 						pantalla[i][j] = '|';
@@ -114,12 +114,12 @@ public class ArrayAhorcado {
 			break;
 		case 5:
 
-			pantalla[1][3] = 'º';
+			pantalla[1][3] = 'O';
 
 			break;
 		case 4:
 
-			pantalla[2][3] = '#';
+			pantalla[2][3] = '|';
 
 			break;
 		case 3:
