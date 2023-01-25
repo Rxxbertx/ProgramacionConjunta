@@ -48,15 +48,14 @@ public class JuegoAhorcado {
 		 * –1.
 		 */
 		Scanner sc = new Scanner(System.in);
-
-		char letra = sc.next().charAt(0);
+	
 
 		for (int i = 0; i < palabra.length; i++) {
 			int cont = 0;
 			while (palabra[i] != palabraSecreta[i] || cont >= 9) {
 				System.out.print("Dime una letra:");
 
-				letra = sc.next().charAt(0);
+				char letra = sc.next().charAt(0);
 
 				if (buscarLetra(palabraSecreta, letra, palabra) == true) {
 
@@ -71,24 +70,24 @@ public class JuegoAhorcado {
 				} else {
 					
 					cont++;
-					System.out.println("Contador: " + cont);
+					System.out.println("La letra no es correcta, pruebe otra vez");
 					switch (cont) {
 					case 1:
 						for (int x = 0; x < 3; x++) {
-							pantalla[4][x] = '@';
+							pantalla[4][x] = '_';
 
 						}
 						mostrar(palabraSecreta, palabra, pantalla);
 						break;
 					case 2:
-						for (int z = 0; z < 4; z++) {
-							pantalla[z][1] = '@';
+						for (int z = 1; z < 4; z++) {
+							pantalla[z][1] = '|';
 						}
 						mostrar(palabraSecreta, palabra, pantalla);
 						break;
 					case 3:
-						pantalla[0][2] = '@';
-						pantalla[0][3] = '@';
+						pantalla[0][2] = '_';
+						pantalla[0][3] = '_';
 						mostrar(palabraSecreta, palabra, pantalla);
 						break;
 					case 4:
@@ -96,7 +95,7 @@ public class JuegoAhorcado {
 						mostrar(palabraSecreta, palabra, pantalla);
 						break;
 					case 5:
-						pantalla[2][3] = 'X';
+						pantalla[2][3] = '|';
 						mostrar(palabraSecreta, palabra, pantalla);
 						break;
 					case 6:
@@ -165,9 +164,10 @@ public class JuegoAhorcado {
 		for (int posFila = 0; posFila < pantalla.length; posFila++) {
 
 			for (int posCol = 0; posCol < pantalla[posFila].length; posCol++) {
+				System.out.print(pantalla[posFila][posCol]);
 
 			}
-			System.out.println(Arrays.toString(pantalla[posFila]));
+			System.out.println();
 		}
 	}
 
@@ -184,7 +184,7 @@ public class JuegoAhorcado {
 		for (int posFila = 0; posFila < pantalla.length; posFila++) {
 
 			for (int posCol = 0; posCol < pantalla[posFila].length; posCol++) {
-				pantalla[posFila][posCol] = '0';
+				pantalla[posFila][posCol] = ' ';
 
 			}
 		}
