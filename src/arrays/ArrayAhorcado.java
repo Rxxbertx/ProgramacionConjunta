@@ -1,5 +1,6 @@
 package arrays;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayAhorcado {
@@ -14,30 +15,41 @@ public class ArrayAhorcado {
 	public static void main(String[] args) {
 
 		escribirPalabraInicial();
+		pantalla = pantalla();
+		ejecuccionJuego();
+		
+		
 
-		char[][] pantalla = pantalla();
-		mostrarPantalla(pantalla);
+	}
 
+	/**
+	 * 
+	 */
+	private static void ejecuccionJuego() {
 		System.out.println("Vamos a empezar el juego, dime una letra");
 		String letra = sc.next();
 //F
-		if (!comprobarLetra(letra)) {
-			dibujarFallo();
-		}
+		while (vidas != 0 && !Arrays.equals(palabraSecreta, mostrarPalabraSecreta)) {
 
+			if (!comprobarLetra(letra)) {
+				dibujarFallo();
+			}
+			mostrarPantalla(pantalla);
+			letra = sc.next();
+
+		}
 	}
 
 	private static boolean comprobarLetra(String letra) {
 
 		boolean acierto = false;
 
-		if (letra.contains(letrasProbadas)) {
+		if (letrasProbadas.contains(letra)) {
 
 			System.out.println("Introduciste una letra probada anteriormente");
 			return true;
 
 		} else {
-			letrasProbadas += letra;
 
 			for (int i = 0; i < palabraSecreta.length; i++) {
 
@@ -47,11 +59,13 @@ public class ArrayAhorcado {
 					acierto = true;
 				}
 
-				System.out.print(mostrarPalabraSecreta[i]);
+				System.out.print(mostrarPalabraSecreta[i] + " ");
 
 			}
+			System.out.println();
 
 		}
+		letrasProbadas += letra;
 		return acierto;
 
 	}
@@ -127,6 +141,7 @@ public class ArrayAhorcado {
 		case 0:
 
 			pantalla[3][4] = '|';
+			System.out.println("has perdido");
 
 			break;
 
