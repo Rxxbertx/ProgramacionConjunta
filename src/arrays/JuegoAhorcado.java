@@ -74,7 +74,7 @@ public class JuegoAhorcado {
 		int cont = 0;
 		for (int i = 0; i < palabra.length; i++) {
 
-			while ((!Arrays.equals(palabra, palabraSecreta)) || (cont < 9)) {
+			while ((!Arrays.equals(palabra, palabraSecreta)) && (cont < 9)) {
 				System.out.println("palabra " + Arrays.toString(palabra));
 				System.out.println("contador: " + cont);
 				System.out.print("Dime una letra:");
