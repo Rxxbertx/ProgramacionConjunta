@@ -48,18 +48,40 @@ public class JuegoAhorcado {
 		 * –1.
 		 */
 		Scanner sc = new Scanner(System.in);
-	
 
+		/*
+		 * Método con el que evaluaremos si las letras introducidas son correctas y si
+		 * adivina la palabra antes de se ahorque el muñeco
+		 */
+
+
+		if (adivinaPalabra(palabraSecreta, palabra, pantalla, sc) == true) {
+			System.out.println("¡Has ganado!");
+		} else {
+			System.out.println("You're death!");
+		}
+
+	}
+
+	/**
+	 * @param palabraSecreta
+	 * @param palabra
+	 * @param pantalla
+	 * @param sc
+	 */
+	private static boolean adivinaPalabra(char[] palabraSecreta, char[] palabra, char[][] pantalla, Scanner sc) {
+		boolean ganar = true;
+		int cont = 0;
 		for (int i = 0; i < palabra.length; i++) {
-			int cont = 0;
-			while (palabra[i] != palabraSecreta[i] || cont >= 9) {
+
+			while ((!Arrays.equals(palabra, palabraSecreta)) || (cont < 9)) {
+				System.out.println("palabra " + Arrays.toString(palabra));
+				System.out.println("contador: " + cont);
 				System.out.print("Dime una letra:");
 
 				char letra = sc.next().charAt(0);
 
 				if (buscarLetra(palabraSecreta, letra, palabra) == true) {
-
-					// System.out.println(Arrays.toString(palabra));
 
 					for (char fila : palabra) {
 						System.out.print(fila);
@@ -68,7 +90,7 @@ public class JuegoAhorcado {
 					System.out.println();
 
 				} else {
-					
+
 					cont++;
 					System.out.println("La letra no es correcta, pruebe otra vez");
 					switch (cont) {
@@ -113,19 +135,18 @@ public class JuegoAhorcado {
 					case 9:
 						pantalla[3][4] = '/';
 						mostrar(palabraSecreta, palabra, pantalla);
-						System.out.println("You're death!");
+
+						ganar = false;
 						break;
 
-						
 					}
-
-					
 
 				}
 
 			}
-		}
 
+		}
+		return ganar;
 	}
 
 	/**
