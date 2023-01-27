@@ -55,11 +55,9 @@ public class JuegoAhorcado {
 		 */
 
 
-		if (adivinaPalabra(palabraSecreta, palabra, pantalla, sc) == true) {
-			System.out.println("¡Has ganado!");
-		} else {
-			System.out.println("You're death!");
-		}
+		adivinaPalabra(palabraSecreta, palabra, pantalla, sc);
+		
+	
 
 	}
 
@@ -69,14 +67,12 @@ public class JuegoAhorcado {
 	 * @param pantalla
 	 * @param sc
 	 */
-	private static boolean adivinaPalabra(char[] palabraSecreta, char[] palabra, char[][] pantalla, Scanner sc) {
-		boolean ganar = true;
+	private static void adivinaPalabra(char[] palabraSecreta, char[] palabra, char[][] pantalla, Scanner sc) {
 		int cont = 0;
 		for (int i = 0; i < palabra.length; i++) {
 
 			while ((!Arrays.equals(palabra, palabraSecreta)) && (cont < 9)) {
-				System.out.println("palabra " + Arrays.toString(palabra));
-				System.out.println("contador: " + cont);
+				
 				System.out.print("Dime una letra:");
 
 				char letra = sc.next().charAt(0);
@@ -135,8 +131,7 @@ public class JuegoAhorcado {
 					case 9:
 						pantalla[3][4] = '/';
 						mostrar(palabraSecreta, palabra, pantalla);
-
-						ganar = false;
+						System.out.println("You're death!");
 						break;
 
 					}
@@ -146,7 +141,6 @@ public class JuegoAhorcado {
 			}
 
 		}
-		return ganar;
 	}
 
 	/**
