@@ -13,9 +13,22 @@ public class Fruit extends Food {
 	}
 
 	@Override
-	void getNutrionalValue() {
-		// TODO Auto-generated method stub
+	int getNutrionalValue() {
+		
+		int numero = (int) Math.random()*100;
+
+		return numero;
+	}
+	
+	public String toString() {
+
+		return super.toString()+"Vitamina: "+getVitamin();
 		
 	}
+
+	public String getVitamin() {
+		return vitamin;
+	}
+
 
 }

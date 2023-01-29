@@ -15,10 +15,10 @@ public abstract class Food {
 
 	public String toString() {
 
-		return ("Comida: "+getName() + " Peso: " + getWeigth());
+		return ( getName() + " Peso: " + getWeigth()+"gr ");
 	}
 	
-	abstract void getNutrionalValue();
+	abstract int getNutrionalValue();
 
 	public String getName() {
 		return name;

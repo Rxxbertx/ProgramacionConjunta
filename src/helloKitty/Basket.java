@@ -2,17 +2,17 @@ package helloKitty;
 
 public class Basket {
 
-	Food[] food;
+	static Food[] food;
 
 	public Basket() {
 
-		this.food = new Food[50];
+		food = new Food[50];
 
 	}
 
-	void addFood(Food food) {
+	void addFood(Food comida) {
 
-		this.food[Food.contador] = food;
+		food[Food.contador] = comida;
 		Food.contador++;
 
 	}
@@ -22,7 +22,7 @@ public class Basket {
 		float weigth = 0;
 
 		for (int i = 0; i < Food.contador; i++) {
-			weigth = this.food[i].getWeigth();
+			weigth += food[i].getWeigth();
 		}
 
 		return weigth;
@@ -34,7 +34,7 @@ public class Basket {
 		String comida = "";
 
 		for (int i = 0; i < Food.contador; i++) {
-			comida = this.food[i].toString();
+			comida += food[i].toString()+"\n";
 		}
 
 		return comida;
