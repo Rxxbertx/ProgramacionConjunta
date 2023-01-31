@@ -11,7 +11,8 @@ public class Fruit extends Food {
 		this.vitamin=vitamin;
 	}
 	
-	public int getNutritionalValue() {
+	@Override
+	int getNutritionalValue() {
 		
 		int numero = (int)Math.random();
 		
@@ -19,9 +20,10 @@ public class Fruit extends Food {
 		
 	}
 	
-	public static void toString(String vitamin) {
+	@Override
+	public String toString() {
 		
-		System.out.println("Vitamina: " + vitamin); 
+		return super.toString() + "Vitamina: " + vitamin; 
 	}
 
 	

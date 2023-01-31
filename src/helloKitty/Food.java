@@ -5,6 +5,12 @@ public abstract class Food {
 	protected String name;
 	protected float weight;
 	
+	//Constructor por defecto
+	
+	public Food () {
+		
+	}
+	
 	//Constructor
 	
 	public Food (String name, float weight) {
@@ -33,13 +39,15 @@ public abstract class Food {
 	
 	//Método público toString
 	
-	public static void toString(String name, float weight) {
-		System.out.println("Producto: " + name); 
-		System.out.println("Peso: " + weight + " kg.");
+	@Override
+	public String toString() {
+		
+		return "Producto: " + name + "Peso: " + weight + " kg.";
 	}
 	
 	
 	//Método abstracto
+	
 	
 	abstract int getNutritionalValue();
 	
