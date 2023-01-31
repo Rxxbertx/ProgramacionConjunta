@@ -12,6 +12,7 @@ public class Fruit extends Food {
 		
 	}
 
+
 	@Override
 	int getNutrionalValue() {
 		
@@ -20,6 +21,7 @@ public class Fruit extends Food {
 		return numero;
 	}
 	
+	@Override
 	public String toString() {
 
 		return super.toString()+"Vitamina: "+getVitamin();
