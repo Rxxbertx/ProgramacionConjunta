@@ -6,7 +6,7 @@ public class Fruit extends Food {
 	
 	//Constructor 
 	
-	public Fruit(String vitamin, String name, float weight) {
+	public Fruit(String name, float weight, String vitamin) {
 		super(name, weight);
 		this.vitamin=vitamin;
 	}

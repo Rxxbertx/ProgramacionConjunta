@@ -9,26 +9,37 @@ public class Basket {
 	static Food [] food;
 
 	
-	public Basket(String[] Food) {
-		this.Food = Food;
+	public Basket() {
+
+		food = new Food [50];
 	}
 
-	public static void addFood(String[] Food, String food) {
+	void addFood(Food comida) {
 		
-		
+		food[Food.contador] = comida;
+		Food.contador++;
 		
 	}
 
-	public static float totalWeight() {
-		float suma = 0;
-		return suma;
+	float totalWeight() {
+		float weight = 0;
+		for (int i = 0; i < Food.contador; i++) {
+			weight += food[i].getWeight();
+		}
+
+		return weight;
 	}
 
-	public static void toString(String [] Food) {
-		for (int i = 0; i < Food.length; i++) {
-			System.out.print(Food[i]);
+	public String toString() {
+		String comida = "";
+
+		for (int i = 0; i < Food.contador; i++) {
+			comida += food[i].toString()+"\n";
+		}
+
+		return comida;
 		}
 
 	}
 
-}
+

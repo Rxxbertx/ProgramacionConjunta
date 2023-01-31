@@ -4,6 +4,7 @@ public abstract class Food {
 	
 	protected String name;
 	protected float weight;
+	static int contador=0;
 	
 	//Constructor por defecto
 	

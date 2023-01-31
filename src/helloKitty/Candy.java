@@ -6,6 +6,12 @@ public class Candy extends Food {
 
 	private int calories;
 
+	// Constructor por defecto
+
+	public Candy() {
+
+	}
+
 	// Constructor hacer el por defecto
 
 	public Candy(String name, float weight, int calories) {
@@ -15,16 +21,16 @@ public class Candy extends Food {
 
 	@Override
 	int getNutritionalValue() {
-		int numero = (int) Math.random()*100;
+		int numero = (int) Math.random() * 100;
 
 		return numero;
 	}
-	
-	//Método toString heredado
-	
+
+	// Método toString heredado
+
 	@Override
-	public String toString () {
-		
+	public String toString() {
+
 		return super.toString() + "Calorías: " + calories;
 	}
 
