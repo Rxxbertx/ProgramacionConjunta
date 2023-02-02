@@ -19,12 +19,12 @@ public class EmpleadosPpal {
 
 		empleados = new Empleados[5];
 		
-		empleados[0] = new Empleados("71542687E", "Maria", 20, "programador", "mujer");
+	/*	empleados[0] = new Empleados("71542687E", "Maria", 20, "programador", "mujer");
 		
 		System.out.println("El empleado nº " + numEmpleado + " que acabas de crear, es el siguiente: "
 				+ Arrays.toString(empleados));
 		cont++;
-		numEmpleado++;
+		numEmpleado++;*/
 		
 		
 

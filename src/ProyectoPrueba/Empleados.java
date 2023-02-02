@@ -1,6 +1,6 @@
-package arrays;
+package ProyectoPrueba;
 
-public class Empleado {
+public class Empleados {
 
 	// Atributos
 
@@ -12,13 +12,13 @@ public class Empleado {
 
 	// Constructor por defecto
 
-	public Empleado() {
+	public Empleados() {
 
 	}
 
 	// Constructor
 
-	public Empleado(String dni, String nombre, int edad, String puesto, String sexo) {
+	public Empleados(String dni, String nombre, int edad, String puesto, String sexo) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -65,6 +65,12 @@ public class Empleado {
 
 	protected void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+	public static void numeroEmpleado() {
+		int empleado =0;
+		empleado++;
+
 	}
 
 }
