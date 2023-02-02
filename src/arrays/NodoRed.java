@@ -5,34 +5,39 @@ public class NodoRed {
 	//Atributos 
 	
 	private String nombreEquipo;
+	private int direccionMAC;
 	private int direccionIP;
 	private int broadcast;
 	private int puertaEnlace;
-	private int red;
-	private int dns;
-	private static int numNodo=0;
+	private int direccionRed;
+	private int servidorDNS;
+	static int numNodos=0;
 	
 	//Constructor por defecto
 	
 	public NodoRed() {
+		//Aumentamos la variable estática
+		numNodos++;
 		
 	}
 
 	
 	
-	//Constructor con parámteros
+	//Constructor con parámetros
 	
-	public NodoRed(String nombreEquipo, int direccionIP, int broadcast, int puertaEnlace, int red, int dns) {
+	public NodoRed(String nombreEquipo, int direccionIP, int broadcast, int puertaEnlace, int direccionRed, int dns, int direccionMAC) {
 		super();
 		this.nombreEquipo = nombreEquipo;
 		this.direccionIP = direccionIP;
+		this.direccionMAC = direccionMAC;
 		this.broadcast = broadcast;
 		this.puertaEnlace = puertaEnlace;
-		this.red = red;
-		this.dns = dns;
+		this.direccionRed = direccionRed;
+		this.servidorDNS = dns;
 	}
 
 
+	//Getters y setters
 
 	protected String getNombreEquipo() {
 		return nombreEquipo;
@@ -42,6 +47,18 @@ public class NodoRed {
 
 	protected void setNombreEquipo(String nombreEquipo) {
 		this.nombreEquipo = nombreEquipo;
+	}
+
+
+
+	protected int getDireccionMAC() {
+		return direccionMAC;
+	}
+
+
+
+	protected void setDireccionMAC(int direccionMAC) {
+		this.direccionMAC = direccionMAC;
 	}
 
 
@@ -82,28 +99,39 @@ public class NodoRed {
 
 
 
-	protected int getRed() {
-		return red;
+	protected int getDireccionRed() {
+		return direccionRed;
 	}
 
 
 
-	protected void setRed(int red) {
-		this.red = red;
+	protected void setDireccionRed(int direccionRed) {
+		this.direccionRed = direccionRed;
 	}
 
 
 
-	protected int getDns() {
-		return dns;
+	protected int getServidorDNS() {
+		return servidorDNS;
 	}
 
 
 
-	protected void setDns(int dns) {
-		this.dns = dns;
+	protected void setServidorDNS(int servidorDNS) {
+		this.servidorDNS = servidorDNS;
+	}
+
+	
+	//Visualizar los nodos
+	
+	public String toString() {
+		return "nombreEquipo: " + getNombreEquipo() + "\ndireccionIP: " + getDireccionIP() + "\ndireccionMAC: "
+				+ getDireccionMAC() + "\npuertaEnlace: " + getPuertaEnlace() + "\nservidorDNS: " + getServidorDNS()
+				+ "\nbroadcastIP: " + getBroadcast();
 	}
 	
-	
 
+
+
+	
 }
