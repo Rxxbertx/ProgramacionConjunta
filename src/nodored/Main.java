@@ -52,7 +52,7 @@ public class Main {
 
 		int resp = sc.nextInt();
 
-		if (resp != NodoRed.nodosCreados) {
+		if (resp <= 0 || resp > NodoRed.nodosCreados) {
 
 			System.out.println("Error has introducido un nodo inexsitente");
 
