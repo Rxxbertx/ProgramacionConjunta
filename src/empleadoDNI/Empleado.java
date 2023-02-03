@@ -11,7 +11,7 @@ public class Empleado {
 	String puesto;
 	String sexo;
 	int edad;
-	static int empleadosID = 0;
+	
 
 	public Empleado(String nombre, String dni, String puesto, String sexo, int edad) {
 
@@ -20,7 +20,7 @@ public class Empleado {
 		this.puesto = puesto;
 		this.sexo = sexo;
 		this.edad = edad;
-
+		
 	};
 
 	static public void insertar(Empleado empleado1) {
@@ -35,8 +35,8 @@ public class Empleado {
 
 		}
 
-		empleado[empleadosID] = empleado1;// 50
-		empleadosID++;// 51
+		empleado[empleado.length-1] = empleado1;// 50
+		
 
 		// empleado[empleado.length - 1] = empleado1;
 		System.out.println();
@@ -47,20 +47,20 @@ public class Empleado {
 
 		empleado[empleadoEliminar] = null;
 
-		int j = -1;
+		int j =0;
 
-		for (int i = 0; i < empleado.length; i++) {
+		for (int i = 0; i < empleado.length; i++) { //5 0-4
 
-			if (empleado[i] == null) {
+			if (empleado[i] == null) {   //2
 				continue;
 			}
-			empleado[++j] = empleado[i];
+			empleado[j++] = empleado[i];  //0-0 1-1 2-3 3-4  4
 
 		}
 
-		Empleado temp[] = empleado.clone();
-		empleado = Arrays.copyOf(temp, j);
-		empleadosID--;
+		
+		empleado = Arrays.copyOf(empleado, j);     //4  0-3
+		
 
 	}
 
@@ -76,6 +76,17 @@ public class Empleado {
 		return -1;
 
 	}
+	
+	@Override
+	public String toString() {
+		return "**********************"+"\nDNI: "+dni+"\n"+
+		"NOMBRE: "+nombre+"\n"+
+		"EDAD: "+edad+"\n"+
+		"PUESTO: "+puesto+"\n"+
+		"SEXO: "+sexo+"\n"+
+		"**********************\n";
+	}
+	
 
 	public String getDni() {
 		return dni;
