@@ -1,60 +1,120 @@
 package empleadoDNI;
 
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class Empleado {
 
-	static Empleado[] empleado = new Empleado[1];
+	static Empleado[] empleado = new Empleado[0];
 
 	String dni;
 	String nombre;
 	String puesto;
-	char sexo;
+	String sexo;
+	int edad;
 	static int empleadosID = 0;
 
-	public Empleado(String dni, String nombre, String puesto, char sexo) {
+	public Empleado(String nombre, String dni, String puesto, String sexo, int edad) {
 
 		this.dni = dni;
 		this.nombre = nombre;
 		this.puesto = puesto;
 		this.sexo = sexo;
+		this.edad = edad;
 
 	};
 
 	static public void insertar(Empleado empleado1) {
 
-		empleado[empleadosID] = empleado1;
-		empleadosID++;
+		Empleado[] temp = empleado.clone();// 49
 
-		Empleado[] temp = empleado.clone();
+		empleado = Arrays.copyOf(temp, empleado.length + 1);// 50
 
-		empleado = Arrays.copyOf(temp, empleado.length);
-
-		for (int i = 0; i < temp.length; i++) {
+		for (int i = 0; i < temp.length; i++) {// 49
 
 			empleado[i] = temp[i];
 
 		}
 
-		empleado[empleado.length - 1] = empleado1;
+		empleado[empleadosID] = empleado1;// 50
+		empleadosID++;// 51
+
+		// empleado[empleado.length - 1] = empleado1;
+		System.out.println();
+
+	}
+
+	static public void eliminar(int empleadoEliminar) {
+
+		empleado[empleadoEliminar] = null;
+
+		int j = -1;
 
 		for (int i = 0; i < empleado.length; i++) {
-			System.out.println(empleado[i]);
+
+			if (empleado[i] == null) {
+				continue;
+			}
+			empleado[++j] = empleado[i];
+
 		}
 
-	}
-
-	static public void eliminar() {
-
-	}
-
-	public void modificar() {
+		Empleado temp[] = empleado.clone();
+		empleado = Arrays.copyOf(temp, j);
+		empleadosID--;
 
 	}
 
-	public void determinarSexo() {
+	static public int existe(String dni) {
 
+		for (int i = 0; i < empleado.length; i++) {
+
+			if (empleado[i].dni.equalsIgnoreCase(dni)) {
+				return i;
+			}
+
+		}
+		return -1;
+
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getPuesto() {
+		return puesto;
+	}
+
+	public void setPuesto(String puesto) {
+		this.puesto = puesto;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 
 }
