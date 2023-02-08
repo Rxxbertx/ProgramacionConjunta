@@ -8,8 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Empleado empleado = new Empleado("nombre", "dni", "puesto", "M", 32);
-		Empleado.insertar(empleado);
+		
+		
 		Empleado empleado1 = new Empleado("nombre1", "dni1", "puesto1", "M", 42);
 		Empleado.insertar(empleado1);
 		Empleado empleado2 = new Empleado("nombre2", "dni2", "puesto2", "M", 62);
@@ -40,6 +40,7 @@ public class Main {
 		boolean ejecucion = true;
 
 		while (ejecucion) {
+			System.out.println();
 			System.out.println("Que deseas hacer?");
 
 			System.out.println(
