@@ -1,3 +1,12 @@
+/**
+ * Clase Ejecutable Ejercicio 1 y 2. Se guardan los datos de los empleados permitiendo crear, modificar, eliminar y consultarlos
+ * 
+ *
+ * @author María
+ * @version 12/02/2023
+ * 
+ */
+
 package arrays;
 
 import java.util.Scanner;
@@ -54,29 +63,33 @@ public class EmpleadoPpal {
 		// Empleado más jóven y más viejo
 
 		masJovenViejo(empleados, numEmpleado);
-		
-		consultaEmpleados(empleados);
 
+		consultaEmpleados(empleados);
 
 		sc.close();
 
 	}
-	
+
 	/**
-	 * @param empleados
-	 * @param numEmpleado
+	 * Método consultaEmpleados con el cual se podrán consultar todos los empleados
+	 * de la base de datos
+	 * 
+	 * @param empleados array en el que se almacenan los datos de los empleados
 	 */
 	private static void consultaEmpleados(Empleados[] empleados) {
-		for (int i = 0; i< Empleados.empleado; i++) {
+		for (int i = 0; i < Empleados.empleado; i++) {
 			System.out.println("Empleado nº " + Empleados.empleado + ":" + empleados[i].getDni() + ", "
-						+ empleados[i].getNombre() + ", " + empleados[i].getEdad() + ", " + empleados[i].getPuesto()
-						+ ", " + empleados[i].getSexo());
+					+ empleados[i].getNombre() + ", " + empleados[i].getEdad() + ", " + empleados[i].getPuesto() + ", "
+					+ empleados[i].getSexo());
 		}
 	}
 
 	/**
-	 * @param empleados
-	 * @param numEmpleado
+	 * Método masJovenViejo con el cual se podrá saber cual es el empleado más viejo
+	 * y más nuevo de la base de datos
+	 * 
+	 * @param empleados   array en el que se almacenan los datos de los empleados
+	 * @param numEmpleado número de empleados que hay en la empresa
 	 */
 	private static void masJovenViejo(Empleado[] empleados, int numEmpleado) {
 		int edadJoven = 100;
@@ -84,7 +97,7 @@ public class EmpleadoPpal {
 		int edadMayor = 0;
 		String nombreMayor = "";
 
-		for (int p = 0; p < numEmpleado; p++) {
+		for (int p = 0; p < Empleado.empleado; p++) {
 
 			if (empleados[p].getEdad() < edadJoven && empleados[p].getEdad() != 0) {
 				edadJoven = empleados[p].getEdad();
@@ -100,8 +113,11 @@ public class EmpleadoPpal {
 	}
 
 	/**
-	 * @param empleados
-	 * @param numEmpleado
+	 * Método edadMediaHombresMujeres con el que se podrá saber la edad media de los
+	 * hombres y la edad media de las mujeres
+	 * 
+	 * @param empleados   array en el que se almacenan los datos de los empleados
+	 * @param numEmpleado número de empleados que hay en la empresa
 	 */
 	private static void edadMediaHombresMujeres(Empleado[] empleados, int numEmpleado) {
 		int sumaMujer = 0;
@@ -130,8 +146,12 @@ public class EmpleadoPpal {
 	}
 
 	/**
-	 * @param empleados
-	 * @param numEmpleado
+	 * 
+	 * Método edadMedia con el cual se sabrá la edad media teniendo en cuenta todos
+	 * los trabajadores
+	 *
+	 * @param empleados   array en el que se almacenan los datos de los empleados
+	 * @param numEmpleado número de empleados que hay en la empresa
 	 */
 	private static void edadMedia(Empleado[] empleados, int numEmpleado) {
 		int suma = 0;
@@ -144,8 +164,12 @@ public class EmpleadoPpal {
 	}
 
 	/**
-	 * @param empleados
-	 * @param numEmpleado
+	 * 
+	 * Método cuentaPorSexo con el que se sabrá cuantos hombre y cuantos mujeres hay
+	 * en la base de datos
+	 * 
+	 * @param empleados   array en el que se almacenan los datos de los empleados
+	 * @param numEmpleado número de empleados que hay en la empresa
 	 */
 	private static void cuentaPorSexo(Empleado[] empleados, int numEmpleado) {
 		int contMujer = 0;
@@ -168,9 +192,15 @@ public class EmpleadoPpal {
 	}
 
 	/**
-	 * @param empleados
-	 * @param sc
-	 * @return 
+	 * Método eliminarEmpleado para eliminar a un empleado si al buscar el dni se
+	 * encuentra en la base de datos
+	 * 
+	 * @param empleados   array en el que se almacenan los datos de los empleados
+	 * @param sc          Scanner para introducir el dni del empleado que se desea
+	 *                    eliminar
+	 * @param numEmpleado número de empleados que hay en la empresa
+	 * @return numEmpleado restándole 1 en el caso de que se haya eliminado a un
+	 *         trabajador
 	 */
 	private static int eliminarEmpleado(Empleado[] empleados, Scanner sc, int numEmpleado) {
 		System.out.print("Dime el número de DNI del empleado que quieres eliminar: ");
@@ -199,8 +229,12 @@ public class EmpleadoPpal {
 	}
 
 	/**
-	 * @param empleados
-	 * @param sc
+	 * Método modificarEmpleado con el cual se puede modificar a un empleado siempre
+	 * que el dni introducido coincida con alguno en la base de datos
+	 * 
+	 * @param empleados array en el que se almacenan los datos de los empleados
+	 * @param sc        Scanner para introducir el dni del empleado que se desea
+	 *                  eliminar
 	 */
 	private static void modificarEmpleado(Empleado[] empleados, Scanner sc, int numEmpleado) {
 		System.out.print("Dime el número de DNI del empleado que quieres modificar: ");
@@ -271,8 +305,11 @@ public class EmpleadoPpal {
 	}
 
 	/**
-	 * @param empleados
-	 * @param sc
+	 * Método crearEmpleado con el que se podrá crear un nuevo empleado
+	 * 
+	 * @param empleados array en el que se almacenan los datos de los empleados
+	 * @param sc        Scanner para introducir el dni del empleado que se desea
+	 *                  eliminar
 	 */
 	private static int crearEmpleado(Empleado[] empleados, Scanner sc, int numEmpleado) {
 		int nuevoEmpleado = 0;
@@ -303,7 +340,5 @@ public class EmpleadoPpal {
 
 		return numEmpleado;
 	}
-	
-	
 
 }
