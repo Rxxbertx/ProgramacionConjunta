@@ -2,6 +2,8 @@ package arrays;
 
 import java.util.Scanner;
 
+import ejercicioArrayObejeto.Empleados;
+
 public class EmpleadoPpal {
 
 	public static void main(String[] args) {
@@ -52,9 +54,24 @@ public class EmpleadoPpal {
 		// Empleado más jóven y más viejo
 
 		masJovenViejo(empleados, numEmpleado);
+		
+		consultaEmpleados(empleados);
+
 
 		sc.close();
 
+	}
+	
+	/**
+	 * @param empleados
+	 * @param numEmpleado
+	 */
+	private static void consultaEmpleados(Empleados[] empleados) {
+		for (int i = 0; i< Empleados.empleado; i++) {
+			System.out.println("Empleado nº " + Empleados.empleado + ":" + empleados[i].getDni() + ", "
+						+ empleados[i].getNombre() + ", " + empleados[i].getEdad() + ", " + empleados[i].getPuesto()
+						+ ", " + empleados[i].getSexo());
+		}
 	}
 
 	/**
@@ -286,5 +303,7 @@ public class EmpleadoPpal {
 
 		return numEmpleado;
 	}
+	
+	
 
 }

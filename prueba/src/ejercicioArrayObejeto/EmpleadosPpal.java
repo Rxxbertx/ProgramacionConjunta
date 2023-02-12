@@ -1,6 +1,5 @@
 package ejercicioArrayObejeto;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class EmpleadosPpal {
@@ -8,183 +7,85 @@ public class EmpleadosPpal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int cont = 0;
-		int numEmpleado = 0;
+		Empleados empleados[] = new Empleados[5];
 
-		// Método para crear empleado
+		int numEmpleado = 4;
 
 		Scanner sc = new Scanner(System.in);
 
-		Empleados[] empleados;
+		empleados[0] = new Empleados("71542687E", "Maria", 30, "programador", "mujer");
 
-		empleados = new Empleados[5];
-		
-	/*	empleados[0] = new Empleados("71542687E", "Maria", 20, "programador", "mujer");
-		
-		System.out.println("El empleado nº " + numEmpleado + " que acabas de crear, es el siguiente: "
-				+ Arrays.toString(empleados));
-		cont++;
-		numEmpleado++;*/
-		
-		
+		empleados[1] = new Empleados("202020u", "Sara", 20, "analista", "mujer");
 
-		for (int i = 0; i < empleados.length; i++) {
-			if (i == 0) {
-				System.out.print("Dime el dni del empleado: ");
-				empleados[cont].setDni(sc.next());
-			} else if (i == 1) {
-				System.out.print("Dime el nombre del empleado: ");
-				empleados[cont].setNombre(sc.next());
-			} else if (i == 2) {
-				System.out.print("Dime la edad del empleado: ");
-				empleados[cont].setEdad(sc.nextInt());
-			} else if (i == 3) {
-				System.out.print("Dime el puesto del empleado: ");
-				empleados[cont].setPuesto(sc.next());
-			} else {
-				System.out.println("Dime el sexo del empleado: ");
-				System.out.println("1. Mujer 2. Hombre");
-				int sexo = sc.nextInt();
+		empleados[2] = new Empleados("71542687E", "Maria", 90, "programador", "hombre");
 
-				switch (sexo) {
-				case 1:
-					empleados[cont].setSexo("Mujer");
-					System.out.println(empleados[cont].getSexo());
-					break;
-				case 2:
-					empleados[cont].setSexo("Hombre");
-					System.out.println(empleados[cont].getSexo());
-					break;
+		empleados[3] = new Empleados("123", "Lorena", 15, "analista", "mujer");
 
-				}
+		System.out.println(empleados[0].getNombre());
 
-			}
+		System.out.println(empleados[0].getEdad());
 
-		}
-		System.out.println("El empleado nº " + numEmpleado + " que acabas de crear, es el siguiente: "
-				+ empleados[cont].toString());
+		// Método para crear empleado
 
-		cont++;
-		numEmpleado++;
-
-		// Método para eliminar empleado
-
-		for (int j = 0; j < numEmpleado; j++) {
-			System.out.print("Dime el número de DNI del empleado que quieres eliminar: ");
-			if (sc.next() == empleados[j].getDni()) {
-				for (int i = 0; i < 5; i++) {
-					System.out.println("El empleado con dni " + empleados[j].getDni() + " ha sido borrado");
-					empleados[j].setDni(null);
-					empleados[j].setEdad(0);
-					empleados[j].setNombre(null);
-					empleados[j].setPuesto(null);
-					empleados[j].setSexo(null);
-
-				}
-			}
-			System.err.println("Este empleado no existe");
-
-		}
+		numEmpleado = (crearEmpleado(empleados, sc, numEmpleado));
 
 		// Método para modificar empleado
 
-		for (int k = 0; k < empleados.length; k++) {
-			System.out.print("Dime el número de DNI del empleado que quieres eliminar: ");
-			if (sc.next() == empleados[k].getDni()) {
-				System.out.println("¿Qué quieres modificar?");
-				System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
-				int modificar = sc.nextInt();
-				while (modificar != 0) {
+		modificarEmpleado(empleados, sc, numEmpleado);
 
-					for (int l = 0; l < 5; l++) {
+		// Método para eliminar empleado
 
-						switch (modificar) {
-						case 1:
-							System.out.print("Dime el nuevo dni: ");
-							empleados[k].setDni(sc.next());
-							break;
-						case 2:
-							System.out.println("Dime el nuevo nombre: ");
-							empleados[k].setNombre(sc.next());
-							break;
-						case 3:
-							System.out.println("Dime la nueva edad: ");
-							empleados[k].setEdad(sc.nextInt());
-							break;
-						case 4:
-							System.out.println("Dime el nuevo oficio: ");
-							empleados[k].setPuesto(sc.next());
-							break;
-						case 5:
-							System.out.println("Dime el nuevo sexo: ");
-							empleados[k].setSexo(sc.next());
-							break;
-						case 0:
-							System.out.println("Ha salido de la modificación del empleado");
-
-						}
-					}
-
-					System.out.println("¿Qué quieres modificar?");
-					System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
-					modificar = sc.nextInt();
-
-				}
-			}
-
-		}
+		numEmpleado = eliminarEmpleado(empleados, sc, numEmpleado);
 
 		// Método para saber cuantas mujeres y hombres hay
-		int contMujer = 0;
-		int contHombre = 0;
-		for (int m = 0; m < empleados.length; m++) {
 
-			if (empleados[m].getSexo().equalsIgnoreCase("mujer")) {
-				contMujer++;
-
-			}
-		}
-		System.out.println("Hay " + contMujer + " mujeres y " + (numEmpleado - contMujer) + " hombres");
+		cuentaPorSexo(empleados, numEmpleado);
 
 		// Método para calcular la edad media de los empleados
 
-		int suma = 0;
-
-		for (int n = 0; n < empleados.length; n++) {
-			suma += empleados[n].getEdad();
-		}
-
-		System.out.println("La edad media de los empleados es: " + suma / numEmpleado);
+		edadMedia(empleados, numEmpleado);
 
 		// Método para calcular la edad media de los empleados según el sexo
 
-		int sumaMujer = 0;
-		int contdMujer = 0;
-		int sumaHombre = 0;
-
-		for (int o = 0; o < empleados.length; o++) {
-
-			if (empleados[o].getSexo().equalsIgnoreCase("mujer")) {
-				sumaMujer += empleados[o].getEdad();
-				contdMujer++;
-			} else {
-				sumaHombre += empleados[o].getEdad();
-				contHombre++;
-			}
-
-		}
-
-		System.out.println("La edad media de las mujeres es " + sumaMujer / contdMujer + " años.");
-		System.out.println("La edad media de los hombres es " + sumaHombre / contHombre + " años");
+		edadMediaHombresMujeres(empleados, numEmpleado);
 
 		// Empleado más jóven y más viejo
-		int edadJoven = 0;
+
+		masJovenViejo(empleados, numEmpleado);
+		
+		//Método para consultar TODOS los empleados
+		
+		consultaEmpleados(empleados);
+
+		sc.close();
+
+	}
+
+	/**
+	 * @param empleados
+	 * @param numEmpleado
+	 */
+	private static void consultaEmpleados(Empleados[] empleados) {
+		for (int i = 0; i< Empleados.empleado; i++) {
+			System.out.println("Empleado nº " + Empleados.empleado + ":" + empleados[i].getDni() + ", "
+						+ empleados[i].getNombre() + ", " + empleados[i].getEdad() + ", " + empleados[i].getPuesto()
+						+ ", " + empleados[i].getSexo());
+		}
+	}
+
+	/**
+	 * @param empleados
+	 * @param numEmpleado
+	 */
+	private static void masJovenViejo(Empleados[] empleados, int numEmpleado) {
+		int edadJoven = 100;
 		String nombreJoven = "";
 		int edadMayor = 0;
 		String nombreMayor = "";
 
-		for (int p = 0; p < empleados.length; p++) {
-			if (empleados[p].getEdad() < edadJoven) {
+		for (int p = 0; p < numEmpleado; p++) {
+
+			if (empleados[p].getEdad() < edadJoven && empleados[p].getEdad() != 0) {
 				edadJoven = empleados[p].getEdad();
 				nombreJoven = empleados[p].getNombre();
 			} else if (empleados[p].getEdad() > edadMayor) {
@@ -193,11 +94,215 @@ public class EmpleadosPpal {
 			}
 
 		}
-		System.out.println("El nombre de la persona más jóven es: " + nombreJoven
+		System.err.println("El nombre de la persona más jóven es: " + nombreJoven
 				+ " y el nombre de la persona más mayor es: " + nombreMayor);
-
-		sc.close();
-
 	}
+
+	/**
+	 * @param empleados
+	 * @param numEmpleado
+	 */
+	private static void edadMediaHombresMujeres(Empleados[] empleados, int numEmpleado) {
+		int sumaMujer = 0;
+		int contdMujer = 0;
+		int contHombre = 0;
+		int sumaHombre = 0;
+
+		for (int o = 0; o < numEmpleado; o++) {
+
+			try {
+				if (empleados[o].getSexo().equalsIgnoreCase("mujer")) {
+					sumaMujer += empleados[o].getEdad();
+					contdMujer++;
+				} else {
+					sumaHombre += empleados[o].getEdad();
+					contHombre++;
+				}
+			} catch (Exception e) {
+
+			}
+
+		}
+
+		System.out.println("La edad media de las mujeres es " + sumaMujer / contdMujer + " años.");
+		System.out.println("La edad media de los hombres es " + sumaHombre / contHombre + " años");
+	}
+
+	/**
+	 * @param empleados
+	 * @param numEmpleado
+	 */
+	private static void edadMedia(Empleados[] empleados, int numEmpleado) {
+		int suma = 0;
+
+		for (int n = 0; n < numEmpleado; n++) {
+			suma += empleados[n].getEdad();
+		}
+
+		System.out.println("La edad media de los empleados es: " + suma / numEmpleado + " años");
+	}
+
+	/**
+	 * @param empleados
+	 * @param numEmpleado
+	 */
+	private static void cuentaPorSexo(Empleados[] empleados, int numEmpleado) {
+		int contMujer = 0;
+		int contHombre = 0;
+		for (int m = 0; m < numEmpleado; m++) {
+
+			try {
+				if (empleados[m].getSexo().equalsIgnoreCase("mujer")) {
+					contMujer++;
+
+				} else if (empleados[m].getSexo().equalsIgnoreCase("hombre")) {
+					contHombre++;
+				}
+			} catch (Exception e) {
+
+			}
+
+		}
+		System.out.println("Hay " + contMujer + " mujeres y " + contHombre + " hombres");
+	}
+
+	/**
+	 * @param empleados
+	 * @param sc
+	 * @return 
+	 */
+	private static int eliminarEmpleado(Empleados[] empleados, Scanner sc, int numEmpleado) {
+		System.out.print("Dime el número de DNI del empleado que quieres eliminar: ");
+		String dni = sc.next();
+
+		for (int i = 0; i < numEmpleado; i++) {
+
+			if (dni.equalsIgnoreCase(empleados[i].getDni())) {
+
+				System.out.println("El empleado con dni " + empleados[i].getDni() + " ha sido borrado");
+				empleados[i].setDni(null);
+				empleados[i].setEdad(0);
+				empleados[i].setNombre(null);
+				empleados[i].setPuesto(null);
+				empleados[i].setSexo(null);
+
+				numEmpleado--;
+
+			} else if (i == numEmpleado - 1) {
+				System.out.println("El dni introducido no pertenece a ningún empleado por lo que no podrá borrarse");
+			}
+
+		}
+		System.out.println("Ha salido de la eliminación de empleado");
+		return numEmpleado;
+	}
+
+	/**
+	 * @param empleados
+	 * @param sc
+	 */
+	private static void modificarEmpleado(Empleados[] empleados, Scanner sc, int numEmpleado) {
+		System.out.print("Dime el número de DNI del empleado que quieres modificar: ");
+		String dni = sc.next();
+		for (int k = 0; k < numEmpleado; k++) {
+			int modificar = 1;
+			if (dni.equalsIgnoreCase(empleados[k].getDni())) {
+
+				while (modificar != 0) {
+					System.out.println("¿Qué quieres modificar?");
+					System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
+					modificar = sc.nextInt();
+
+					for (int l = 0; l < 5; l++) {
+
+						switch (modificar) {
+						case 1:
+							System.out.print("Dime el nuevo dni: ");
+							empleados[k].setDni(sc.next());
+							System.out.println("¿Qué quieres modificar?");
+							System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
+							modificar = sc.nextInt();
+							break;
+						case 2:
+							System.out.println("Dime el nuevo nombre: ");
+							empleados[k].setNombre(sc.next());
+							System.out.println("¿Qué quieres modificar?");
+							System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
+							modificar = sc.nextInt();
+							break;
+						case 3:
+							System.out.println("Dime la nueva edad: ");
+							empleados[k].setEdad(sc.nextInt());
+							System.out.println("¿Qué quieres modificar?");
+							System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
+							modificar = sc.nextInt();
+							break;
+						case 4:
+							System.out.println("Dime el nuevo oficio: ");
+							empleados[k].setPuesto(sc.next());
+							System.out.println("¿Qué quieres modificar?");
+							System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
+							modificar = sc.nextInt();
+							break;
+						case 5:
+							System.out.println("Dime el nuevo sexo: ");
+							empleados[k].setSexo(sc.next());
+							System.out.println("¿Qué quieres modificar?");
+							System.out.println("1.DNI 2.Nombre 3.Edad 4.Puesto 5.Sexo 0.SALIR");
+							modificar = sc.nextInt();
+							break;
+						case 0:
+
+							k = empleados.length;
+							break;
+
+						}
+
+					}
+					System.out.println("Ha salido de la modificación del empleado");
+
+				}
+
+			} else if (k == (numEmpleado - 1)) {
+				System.out.println("El dni introducido no existe en la base de datos de empleados");
+			}
+		}
+	}
+
+	/**
+	 * @param empleados
+	 * @param sc
+	 */
+	private static int crearEmpleado(Empleados[] empleados, Scanner sc, int numEmpleado) {
+		int nuevoEmpleado = 0;
+		do {
+			System.out.println("Selecciona a continuación la opción que desees realizar");
+			System.out.println("1. CREAR nuevo empleado 2. SALIR");
+
+			nuevoEmpleado = sc.nextInt();
+
+			switch (nuevoEmpleado) {
+			case 1:
+				int i = 0;
+				System.out.println("Dime (en este orden) el dni, nombre, edad, puesto y sexo del empleado.");
+
+				empleados[i] = new Empleados(sc.next(), sc.next(), sc.nextInt(), sc.next(), sc.next());
+				System.out.println("El empleado que acabas de crear es: " + empleados[i].getDni() + ", "
+						+ empleados[i].getNombre() + ", " + empleados[i].getEdad() + ", " + empleados[i].getPuesto()
+						+ ", " + empleados[i].getSexo());
+
+				i++;
+				numEmpleado++;
+				break;
+			case 2:
+				nuevoEmpleado = 2;
+				break;
+			}
+		} while (nuevoEmpleado != 2);
+
+		return numEmpleado;
+	}
+	
+	
 
 }

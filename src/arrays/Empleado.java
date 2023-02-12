@@ -9,6 +9,8 @@ public class Empleado {
 	private int edad;
 	private String puesto;
 	private String sexo;
+	static int empleado =0;
+
 
 	// Constructor por defecto
 
@@ -25,6 +27,7 @@ public class Empleado {
 		this.edad = edad;
 		this.puesto = puesto;
 		this.sexo = sexo;
+		empleado++;
 	}
 
 	protected String getDni() {
