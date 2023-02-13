@@ -11,7 +11,6 @@ package arrays;
 
 import java.util.Scanner;
 
-import ejercicioArrayObejeto.Empleados;
 
 public class EmpleadoPpal {
 
@@ -76,9 +75,9 @@ public class EmpleadoPpal {
 	 * 
 	 * @param empleados array en el que se almacenan los datos de los empleados
 	 */
-	private static void consultaEmpleados(Empleados[] empleados) {
-		for (int i = 0; i < Empleados.empleado; i++) {
-			System.out.println("Empleado nº " + Empleados.empleado + ":" + empleados[i].getDni() + ", "
+	private static void consultaEmpleados(Empleado[] empleados) {
+		for (int i = 0; i < Empleado.empleado; i++) {
+			System.out.println("Empleado nº " + Empleado.empleado + ":" + empleados[i].getDni() + ", "
 					+ empleados[i].getNombre() + ", " + empleados[i].getEdad() + ", " + empleados[i].getPuesto() + ", "
 					+ empleados[i].getSexo());
 		}
