@@ -25,30 +25,55 @@ public class ContactoPpal {
 
 		eligeOpcion(sc, opcion, contactos);
 
+		// Método para borrar contacto
 
 		
-		
-		
+
 	}
 
 	/**
 	 * @param contactos
 	 * @param sc
 	 */
+	private static void borrarContacto(Contacto[] contactos, Scanner sc) {
+		visualizarContactos(contactos);
+
+		System.out.println("Escriba el número de identificador del contacto que desea modificar");
+		int numIdentificador = sc.nextInt();
+		for (int i = 0; i < contactos.length & contactos[i] != null; i++) {
+			if (i == numIdentificador) {
+				while (contactos[i] != null) {
+					contactos[i] = contactos[i + 1];
+
+				}
+
+			}
+
+		}
+	}
+
+	/**
+	 * Método modificarContacto con el cual se puede modificar algún contacto creado
+	 * previamente
+	 * 
+	 * @param contactos
+	 * @param sc
+	 */
 	private static void modificarContacto(Contacto[] contactos, Scanner sc) {
 		visualizarContactos(contactos);
-		
+
 		System.out.println("Escriba el número de identificador del contacto que desea modificar");
-		int numIdentificador=sc.nextInt();
-		for (int i =0; i<Contacto.identificador;i++) {
-			while(contactos[i].getIdentificador()==numIdentificador) {
+		int numIdentificador = sc.nextInt();
+		for (int i = 0; i < contactos.length & contactos[i] != null; i++) {
+			if (i == numIdentificador) {
 				System.out.println("Modifique los datos del contacto con identificador " + numIdentificador);
-				contactos[i] = new Contacto(Contacto.identificador, sc.next(), sc.next(), sc.next(),
-						sc.next(), sc.next(), sc.next());
+				contactos[i] = new Contacto(Contacto.identificador, sc.next(), sc.next(), sc.next(), sc.next(),
+						sc.next(), sc.next());
 				System.out.println(contactos[i].getNombre() + contactos[i].getApellido1() + contactos[i].getApellido2()
 						+ contactos[i].getDireccion() + contactos[i].getTelefono() + contactos[i].getEmail());
-				i=100;
+
 			}
+
 		}
 	}
 
@@ -110,7 +135,7 @@ public class ContactoPpal {
 				opcion = sc.nextInt();
 				break;
 			case 3:
-
+				borrarContacto(contactos, sc);
 				System.out.println("¿Qué deseas hacer a continuación?");
 				opcion = sc.nextInt();
 				break;
