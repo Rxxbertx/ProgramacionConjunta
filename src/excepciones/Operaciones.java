@@ -13,7 +13,7 @@ public class Operaciones {
 		
 	}
 	
-	//Constructor con parámtros
+	//Constructor con parámetros
 
 	public Operaciones(int numero1, int numero2) {
 		super();
