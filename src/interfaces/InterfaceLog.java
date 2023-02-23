@@ -9,7 +9,7 @@ public interface InterfaceLog {
 	
 	
 	public void log(String msg);
-	void SYSO()KLDFJLK;
+	
 	
 	
 	
