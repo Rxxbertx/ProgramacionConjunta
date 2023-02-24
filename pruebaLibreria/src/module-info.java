@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author María
- *
- */
-module pruebaLibreria {
-}
