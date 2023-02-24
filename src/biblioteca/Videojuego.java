@@ -1,6 +1,6 @@
 package biblioteca;
 
-public class Videojuego {
+public class Videojuego implements Coleccionable{
 
 	// Atributos
 	private String nombre;
@@ -34,7 +34,7 @@ public class Videojuego {
 	}
 
 	public String mostrar() {
-		return Coleccionable.VIDEOJUEGO + "\nVideojuego: " + nombre + "\nPlataforma: " + plataforma;
+		return Coleccionable.VIDEOJUEGO + "\n--------------------" + "\nVideojuego: " + nombre + "\nPlataforma: " + plataforma;
 
 	}
 
