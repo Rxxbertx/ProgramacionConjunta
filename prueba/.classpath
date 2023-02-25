@@ -6,12 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="ficherosjar/espalindromo.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/esPalindromo"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Cadenas"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

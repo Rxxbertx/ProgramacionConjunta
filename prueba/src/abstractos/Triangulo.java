@@ -31,6 +31,7 @@ public class Triangulo extends Figura{
 	
 	//Método heredado de clase abstracta figura
 	
+	@Override
 	public double calcularArea() {
 		return (base*altura)/2;
 	}
