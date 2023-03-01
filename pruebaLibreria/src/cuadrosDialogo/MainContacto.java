@@ -20,17 +20,17 @@ public class MainContacto {
 	private static void consulta(Contacto[] persona) {
 		// TODO Auto-generated method stub
 
-		try {
-			String cadena ="";
+		
 
-				for (int i = 0; i < Contacto.numContactos; i++) {
-					 cadena  += persona[i].getNombre() + " " + persona[i].getTelefono() + "\n";
-				}
-				JOptionPane.showMessageDialog(null, 
-						cadena, 
-						"Consultar Agenda",
-						JOptionPane.INFORMATION_MESSAGE);
+		
+		try {
 			
+			String cadena = "";
+
+			for (int i = 0; i < Contacto.numContactos; i++) {
+				cadena += persona[i].getNombre() + " " + persona[i].getTelefono() + "\n";
+			}
+			JOptionPane.showMessageDialog(null, cadena, "Consultar Agenda", JOptionPane.INFORMATION_MESSAGE);
 
 		} catch (NullPointerException e) {
 			JOptionPane.showMessageDialog(null, "No existe ningún contacto en la lista", "Consultar Agenda",
@@ -41,6 +41,9 @@ public class MainContacto {
 
 	private static void baja(Contacto[] persona) {
 		// TODO Auto-generated method stub
+
+		Contacto[] personaNulo = new Contacto[10];
+
 		String nombre = JOptionPane.showInputDialog(null, "Nombre del contacto:", "Borrar contacto",
 				JOptionPane.QUESTION_MESSAGE);
 		String[] valores = { "Sí", "No", "Cancelar" };
@@ -48,29 +51,42 @@ public class MainContacto {
 				"Eliminar contacto", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, valores,
 				valores[0]);
 		if (opcion == 0) {
-			int cont=0;
-
-			for (int i = 0; i < Contacto.numContactos; i++) {
-				System.out.println(persona[i].getNombre());
-				System.out.println(nombre);
-				if (persona[i].getNombre().equalsIgnoreCase(nombre)) {
-					for(int j=i;j<Contacto.numContactos;j++) {
-						persona[j].setNombre(persona[j+1].getNombre());
-						persona[j].setTelefono(persona[j+1].getTelefono());
-						
-					}
-					Contacto.numContactos--;
-					cont++;
+			int cont = 0;
+			int i=0;
+			try {
+				for (i=0; i < persona.length; i++) {
 					
+					
+					System.out.println(persona[i].getNombre());
+					System.out.println(nombre);
+					if (persona[i].getNombre().equalsIgnoreCase(nombre) && persona[i] != null) {
+						for(int j=0;j<persona.length;j++) {
+							personaNulo[j] = persona[i];
+							i++;
+						}
+						
+						System.out.println(Arrays.toString(personaNulo));
+						
+						cont++;
+						Contacto.numContactos--;
+
+					} else {
+						System.out.println("Hola");
+					}
+
 				}
-				
-			}if(cont==0) {
-				System.out.println("El contacto " + nombre + " no existe en la agenda");
-			}else {
-				System.out.println("El contacto ya se ha borrado de la agenda");
+			}catch(NullPointerException e) {
+				i=persona.length;
 			}
-			persona[Contacto.numContactos+1].setNombre(null);
-			persona[Contacto.numContactos+1].setTelefono(null);
+			
+			System.out.println("pie");
+			for ( i = 0; i < persona.length; i++) {
+				
+				persona[i] = personaNulo[i];
+				
+
+			}
+			System.out.println(Arrays.toString(persona));
 		}
 
 	}
