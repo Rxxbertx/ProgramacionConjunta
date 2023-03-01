@@ -3,9 +3,9 @@ package cuadrosDialogo;
 public class Contacto {
 
 	// Atributos
-	private  String nombre;
-	private  String telefono;
-	 static int numContactos=0;
+	private String nombre;
+	private String telefono;
+	static int numContactos = 0;
 
 	// Constructor con parámetros
 

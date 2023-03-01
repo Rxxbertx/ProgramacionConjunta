@@ -1,3 +1,8 @@
+/*
+ * @version 01/03/2023
+ * @author María Choza
+ */
+
 package cuadrosDialogo;
 
 import java.util.Arrays;
@@ -9,22 +14,24 @@ public class MainContacto {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Contacto[] persona = new Contacto[10];
+		Contacto[] persona = new Contacto[100];
 		do {
 			menu(persona);
 
-		} while (agenda() != 4);
+		} while (menu(persona) != 4);
 
 	}
+
+	/*
+	 * Método consulta para consultar los contactos que haya en la agenda
+	 * 
+	 */
 
 	private static void consulta(Contacto[] persona) {
 		// TODO Auto-generated method stub
 
-		
+		if (Contacto.numContactos != 0) {
 
-		
-		try {
-			
 			String cadena = "";
 
 			for (int i = 0; i < Contacto.numContactos; i++) {
@@ -32,17 +39,21 @@ public class MainContacto {
 			}
 			JOptionPane.showMessageDialog(null, cadena, "Consultar Agenda", JOptionPane.INFORMATION_MESSAGE);
 
-		} catch (NullPointerException e) {
+		} else {
+
 			JOptionPane.showMessageDialog(null, "No existe ningún contacto en la lista", "Consultar Agenda",
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 
 	}
 
+	/*
+	 * Método baja para eliminar los contactos de la agenda
+	 * 
+	 */
+
 	private static void baja(Contacto[] persona) {
 		// TODO Auto-generated method stub
-
-		Contacto[] personaNulo = new Contacto[10];
 
 		String nombre = JOptionPane.showInputDialog(null, "Nombre del contacto:", "Borrar contacto",
 				JOptionPane.QUESTION_MESSAGE);
@@ -51,44 +62,23 @@ public class MainContacto {
 				"Eliminar contacto", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, valores,
 				valores[0]);
 		if (opcion == 0) {
-			int cont = 0;
-			int i=0;
-			try {
-				for (i=0; i < persona.length; i++) {
-					
-					
-					System.out.println(persona[i].getNombre());
-					System.out.println(nombre);
-					if (persona[i].getNombre().equalsIgnoreCase(nombre) && persona[i] != null) {
-						for(int j=0;j<persona.length;j++) {
-							personaNulo[j] = persona[i];
+
+			for (int i = 0; i < Contacto.numContactos; i++) {
+
+				if (persona[i].getNombre().equalsIgnoreCase(nombre) && persona[i] != null) {
+					persona[i] = null;
+
+					for (int j = (i + 1); j < persona.length; j++) {
+						if (persona[j] != null) {
+							persona[i] = persona[j];
 							i++;
 						}
-						
-						System.out.println(Arrays.toString(personaNulo));
-						
-						cont++;
-						Contacto.numContactos--;
-
-					} else {
-						System.out.println("Hola");
 					}
-
+					persona[i] = null;
 				}
-			}catch(NullPointerException e) {
-				i=persona.length;
 			}
-			
-			System.out.println("pie");
-			for ( i = 0; i < persona.length; i++) {
-				
-				persona[i] = personaNulo[i];
-				
-
-			}
-			System.out.println(Arrays.toString(persona));
+			Contacto.numContactos--;
 		}
-
 	}
 
 	private static void alta(Contacto[] persona) {
@@ -98,39 +88,18 @@ public class MainContacto {
 				JOptionPane.QUESTION_MESSAGE);
 		String telefono = JOptionPane.showInputDialog(null, "Teléfono del contacto", "Entrada",
 				JOptionPane.QUESTION_MESSAGE);
-		System.out.println(Contacto.numContactos);
 
 		persona[Contacto.numContactos] = new Contacto(nombre, telefono);
-		System.out.println(Arrays.toString(persona));
 
-		System.out.println(Contacto.numContactos);
 		JOptionPane.showMessageDialog(null, "El contacto " + nombre + " se ha dado de alta", "Alta contacto",
 				JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
-	private static void menu(Contacto[] persona) {
-		// TODO Auto-generated method stub
-
-		switch (agenda()) {
-		case 1:
-			alta(persona);
-			break;
-		case 2:
-			baja(persona);
-			break;
-		case 3:
-			consulta(persona);
-			break;
-		case 4:
-			break;
-		}
-	}
-
 	/**
-	 * 
+	 * Método menú donde se escogerá lo que se quiera hacer dentro de unas opciones predefinidas
 	 */
-	private static int agenda() {
+	private static int menu(Contacto[] persona) {
 		int opcion;
 		String[] agenda = { "ALTA", "BAJA", "CONSULTA", "SALIR" };
 
@@ -149,6 +118,20 @@ public class MainContacto {
 			opcion = 3;
 		} else {
 			opcion = 4;
+		}
+
+		switch (opcion) {
+		case 1:
+			alta(persona);
+			break;
+		case 2:
+			baja(persona);
+			break;
+		case 3:
+			consulta(persona);
+			break;
+		case 4:
+			break;
 		}
 		return opcion;
 	}
