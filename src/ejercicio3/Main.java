@@ -2,6 +2,8 @@ package ejercicio3;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Main {
 
 	static Scanner sc = new Scanner(System.in);
@@ -19,6 +21,8 @@ public class Main {
 
 	private static void menu() {
 
+		JOptionPane.showInternalMessageDialog(null, "bEINVENIDO AL PROGRAMA BOTLEXIS");
+		
 		boolean salir = false;
 
 		do {
