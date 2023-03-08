@@ -1,10 +1,12 @@
 package ejercicio3CONjoption;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Contacto {
 
-	static Contacto[] contactos = new Contacto[100];
+	static List<Contacto> agenda = new ArrayList<Contacto>();
 	static Scanner sc = new Scanner(System.in);
 	private static int identificador = 0;
 
@@ -56,23 +58,8 @@ public class Contacto {
 
 	static void insertar(Contacto contacto) {
 
-		if (identificador < 100) {
-
-			boolean encontrado = false;
-
-			for (int i = 0; i < contactos.length & !encontrado; i++) {
-
-				if (contactos[i] == null) {
-					contactos[i] = contacto;
-					encontrado = true;
-					identificador++;
-				}
-			}
-
-		} else {
-			System.out.println("No puedes añadir mas de 100 contactos ERROR 203");
-
-		}
+		agenda.add(contacto);
+		identificador++;
 	}
 
 	/**
@@ -141,48 +128,12 @@ public class Contacto {
 
 	static void borrar(int k) {
 
-		contactos[k] = null;
-
-		int j = 0;
-
-		for (int i = 0; i < contactos.length; i++) {
-
-			if (contactos[i] == null) {
-				continue;
-			} else {
-				contactos[j++] = contactos[i];
-			}
-
-		}
-		contactos[j] = null;
+		agenda.remove(k);
+		
 
 	}
 
-	/**
-	 * Buscamos dentro del array los contactos por su Apellido1
-	 * 
-	 * @param apellido Cadena del apellido a buscar
-	 */
-
-	static void buscar(String apellido) {
-
-		int fnd = 0;
-
-		for (int i = 0; i < contactos.length & contactos[i] != null; i++) {
-
-			if (apellido.equalsIgnoreCase(contactos[i].apellido1)) {
-				fnd = 1;
-				System.out.println(contactos[i].toString());
-
-			}
-
-		}
-		if (fnd == 0) {
-			System.out.println("No se ha encontrado ninguna correspondecia");
-		}
-
-	}
-
+	
 	/**
 	 * Metodo para la representacion visual del objeto
 	 */
@@ -203,8 +154,12 @@ public class Contacto {
 
 		String nombre = "";
 
-		for (int i = 0; i < contactos.length & contactos[i] != null; i++) {
-			nombre += (contactos[i].toString());
+		for (int i = 0; i < agenda.size(); i++) {
+			nombre += (agenda.get(i).toString());
+		}
+		
+		if (identificador==0) {
+			return "NO HAY CONTACTOS";
 		}
 
 		return nombre;

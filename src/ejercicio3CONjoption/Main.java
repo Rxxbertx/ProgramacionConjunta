@@ -82,16 +82,23 @@ public class Main {
 
 	private static void borrar() {
 
-		Contacto.mostrarTodos();
-		System.out.println("Que contacto quieres borrar?");
-		int resp = sc.nextInt();
+		JOptionPane.showMessageDialog(null, Contacto.mostrarTodos(), "AGENDA", JOptionPane.INFORMATION_MESSAGE);
+
+		String resp = JOptionPane.showInputDialog(null, "CONTACTO A BORRAR", "AGENDA", JOptionPane.QUESTION_MESSAGE);
+
+		int resp1 = Integer.parseInt(resp);
 		boolean found = false;
 
-		for (int i = 0; i < Contacto.contactos.length & Contacto.contactos[i] != null & !found; i++) {
-			if (Contacto.contactos[i].getId() == resp) {
+		for (int i = 0; i < Contacto.agenda.size(); i++) {
+			if (resp1== Contacto.agenda.get(i).getId()) {
 				found = true;
 				Contacto.borrar(i);
 			}
+		}
+		
+		if (!found) {
+			JOptionPane.showMessageDialog(null, "ERROR", "AGENDA", JOptionPane.INFORMATION_MESSAGE);
+
 		}
 	}
 
