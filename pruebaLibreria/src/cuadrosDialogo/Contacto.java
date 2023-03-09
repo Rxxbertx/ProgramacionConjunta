@@ -3,9 +3,16 @@ package cuadrosDialogo;
 public class Contacto {
 
 	// Atributos
-	private String nombre;
-	private String telefono;
+	 String nombre;
+	 String telefono;
 	static int numContactos = 0;
+	
+	//Constructor por defecto
+	
+	public Contacto() {
+		super();
+	}
+	
 
 	// Constructor con parámetros
 
@@ -31,6 +38,12 @@ public class Contacto {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public String mostrarContacto() throws Exception {
+
+		return "Nombre: " + nombre + "\nTeléfono: " + telefono + "\n--------------------";
+
 	}
 
 }
